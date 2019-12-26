@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/mobilebg"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#1Cffffff">
+
+        <ImageView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:minHeight="?actionBarSize"
+            android:padding="@dimen/appbar_padding"
+            android:src="@drawable/ziggylogo"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            android:id="@+id/rv_kategori"
+            android:background="@android:color/transparent"
+            app:tabSelectedTextColor="@android:color/white"/>
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/tabs"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:tabMode="scrollable"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:tabSelectedTextColor="@android:color/white"-->
+<!--            app:tabTextColor="#A59D9D"/>-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:tabMode="scrollable"/>
+</LinearLayout>
