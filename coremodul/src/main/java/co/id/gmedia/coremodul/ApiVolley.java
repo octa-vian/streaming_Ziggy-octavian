@@ -144,7 +144,7 @@ public class ApiVolley {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
-                params.put("Client-Service", "yia");
+                params.put("Client-Service", "tv");
                 params.put("Auth-Key", "gmedia");
                 params.put("User-Id", token1);
                 params.put("Timestamp", token2);

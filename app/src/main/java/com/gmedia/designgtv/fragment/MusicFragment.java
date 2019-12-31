@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gmedia.designgtv.MusicAdapter;
+import com.gmedia.designgtv.ItemAdapter;
 import com.gmedia.designgtv.MusicModel;
 import com.gmedia.designgtv.R;
 
@@ -28,7 +28,7 @@ import java.util.List;
 public class MusicFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private MusicAdapter adapter;
+    private ItemAdapter adapter;
     private List<MusicModel> musicList;
 
     public MusicFragment() {
@@ -48,7 +48,7 @@ public class MusicFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_music);
 
         musicList = new ArrayList<>();
-        adapter = new MusicAdapter(getContext(), musicList);
+//        adapter = new ItemAdapter(getContext(), musicList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 4);
         recyclerView.setLayoutManager(mLayoutManager);

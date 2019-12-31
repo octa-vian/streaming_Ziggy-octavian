@@ -1,5 +1,6 @@
 package com.gmedia.designgtv;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -23,12 +24,13 @@ import java.util.List;
 public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHolder> {
     private List<KategoriModel> kategoriModels;
     Context context;
-    int selectedPosition=-1;
+    int selectedPosition=0;
+    private KategoriAdapterCallback mAdapterCallback;
 
-
-    public KategoriAdapter(Context mContext, List<KategoriModel> kategoriModels){
+    public KategoriAdapter(Context context,List<KategoriModel> kategoriModels, KategoriAdapterCallback adapterCallback){
+        this.context= context;
+        this.mAdapterCallback = adapterCallback;
         this.kategoriModels = kategoriModels;
-        this.context = mContext;
     }
 
     @NonNull
@@ -40,19 +42,23 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final KategoriAdapter.ViewHolder holder, final int position) {
-        holder.btnKategori.setText(kategoriModels.get(position).getNama());
-        if(selectedPosition==position)
-            holder.btnKategori.setTextColor(Color.parseColor("#fff"));
-        else
-            holder.btnKategori.setTextColor(Color.parseColor("#f0f0f0"));
-
-        holder.llKategori.setOnClickListener(new View.OnClickListener() {
+        final String[] kat = {kategoriModels.get(0).getId()};
+        holder.tv_kategori.setText(kategoriModels.get(position).getNama());
+        if(selectedPosition==position) {
+            holder.tv_kategori.setTextColor(Color.WHITE);
+            holder.itemView.setBackgroundResource(R.drawable.selected_rows);
+        }
+        else {
+            holder.tv_kategori.setTextColor(Color.parseColor("#FFBEBEBE"));
+            holder.itemView.setBackground(null);
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedPosition=position;
                 notifyDataSetChanged();
-                Toast.makeText(context, "Position "+position, Toast.LENGTH_SHORT).show();
-
+                kat[0] = kategoriModels.get(position).getId();
+                mAdapterCallback.onRowKategoriCallback(kategoriModels.get(position).getId());
             }
         });
     }
@@ -63,12 +69,13 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private Button btnKategori;
-        private LinearLayout llKategori;
+        private TextView tv_kategori;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btnKategori = itemView.findViewById(R.id.btn_kategori);
-            llKategori = itemView.findViewById(R.id.ll_kategori);
+            tv_kategori = itemView.findViewById(R.id.tv_kategori);
         }
+    }
+    public interface KategoriAdapterCallback {
+        void onRowKategoriCallback(String id_kategori);
     }
 }

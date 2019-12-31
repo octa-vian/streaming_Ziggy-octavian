@@ -8,29 +8,43 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.gmedia.designgtv.model.ItemModel;
+
 import java.util.List;
 
-public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>  {
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>  {
 
     private Context mContext;
-    private List<MusicModel> musicModels;
+    private List<ItemModel> musicModels;
 
-    public MusicAdapter(Context mContext,List<MusicModel> musicModels) {
+    public ItemAdapter(Context mContext, List<ItemModel> musicModels) {
         this.mContext = mContext;
         this.musicModels = musicModels;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_music,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tv,
                 parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        MusicModel m= musicModels.get(position);
-        holder.imgMusic.setImageResource(m.getDrawable());
+        ItemModel m= musicModels.get(position);
+
+        Glide.with(mContext)
+                .load(m.getUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.placeholder)
+                .override(400, 400)
+                .centerCrop()
+                .transform(new RoundedCornersTransformation(30,0))
+                .into(holder.imgMusic);
         holder.tvTitle.setText(m.getTitle());
     }
 
@@ -38,6 +52,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     public int getItemCount() {
         return musicModels.size();
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgMusic;

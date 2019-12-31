@@ -3,10 +3,6 @@ package com.gmedia.designgtv.model;
 public class KategoriModel {
     String id;
     String nama;
-    public KategoriModel(){
-
-    }
-
     public KategoriModel(String id, String nama){
         this.nama = nama;
         this.id = id;

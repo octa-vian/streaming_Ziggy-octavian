@@ -25,26 +25,26 @@
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="scrollable"
-            android:id="@+id/rv_kategori"
-            android:background="@android:color/transparent"
-            app:tabSelectedTextColor="@android:color/white"/>
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/tabs"-->
+<!--        <RelativeLayout-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:tabMode="scrollable"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            app:tabSelectedTextColor="@android:color/white"-->
-<!--            app:tabTextColor="#A59D9D"/>-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:context=".MainActivity"-->
+<!--            android:id="@+id/relativelayout1">-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_kategori"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="false"
+                android:layout_centerHorizontal="false" />
+
+<!--        </RelativeLayout>-->
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
