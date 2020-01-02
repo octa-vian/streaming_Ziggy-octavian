@@ -1,14 +1,17 @@
 package com.gmedia.designgtv.model;
 
 public class ItemModel {
-    String id,title,icon,url,kategori;
+    String id,title,icon,url,kategori, m_package,url_playstore, url_web;
 
-    public ItemModel(String id, String title, String icon,String url,String kategori){
+    public ItemModel(String id, String title, String icon,String url,String kategori,String m_package, String url_playstore, String url_web){
         this.id = id;
         this.title = title;
         this.icon = icon;
         this.url = url;
         this.kategori =kategori;
+        this.m_package = m_package;
+        this.url_playstore= url_playstore;
+        this.url_web= url_web;
     }
 
     public ItemModel(String id, String icon){
@@ -54,5 +57,29 @@ public class ItemModel {
 
     public void setKategori(String kategori) {
         this.kategori = kategori;
+    }
+
+    public String getM_package() {
+        return m_package;
+    }
+
+    public void setM_package(String m_package) {
+        this.m_package = m_package;
+    }
+
+    public String getUrl_playstore() {
+        return url_playstore;
+    }
+
+    public void setUrl_playstore(String url_playstore) {
+        this.url_playstore = url_playstore;
+    }
+
+    public String getUrl_web() {
+        return url_web;
+    }
+
+    public void setUrl_web(String url_web) {
+        this.url_web = url_web;
     }
 }

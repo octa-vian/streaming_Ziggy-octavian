@@ -221,6 +221,9 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
                                         ,jadwal.getString("icon")
                                         ,jadwal.getString("url")
                                         ,jadwal.getString("kategori")
+                                        ,jadwal.getString("package")
+                                        ,jadwal.getString("url_playstore")
+                                        ,jadwal.getString("url_web")
                                 );
                                 itemModels.add(m);
                             }
