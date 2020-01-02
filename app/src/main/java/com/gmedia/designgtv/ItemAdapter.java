@@ -18,6 +18,7 @@ import com.gmedia.designgtv.utils.Utils;
 
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>  {
@@ -32,8 +33,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>  {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tv,
-                parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tv, parent, false);
         return new ViewHolder(view);
     }
 
@@ -62,7 +62,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>  {
                     if(m.getM_package().isEmpty()){
                         if(m.getUrl_playstore().isEmpty()){
                             if(m.getUrl_web().isEmpty()){
-                                Toast.makeText(mContext,"Paket tidak ditemukan",Toast.LENGTH_SHORT).show();
+                                Toasty.error(mContext, "Paket tidak ditemukan !!..", Toast.LENGTH_SHORT, true).show();
                             }else{
                                 Intent httpIntent = new Intent(Intent.ACTION_VIEW);
                                 httpIntent.setData(Uri.parse(m.getUrl_web()));
