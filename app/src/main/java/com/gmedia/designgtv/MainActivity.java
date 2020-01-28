@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_new_menu);
         context = this;
         dialogBox = new DialogBox(this);
         dialogItem = new DialogBox(this);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
 
         adapter = new KategoriAdapter(context,itemList,this);
         GridLayoutManager layoutManager = new GridLayoutManager(this,1);
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
         // item tv
         RecyclerView rv_item = (RecyclerView) findViewById(R.id.rv_item);
         itemAdapter = new ItemAdapter(this, itemModels);
-
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 4);
         rv_item.setLayoutManager(mLayoutManager);
         rv_item.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(10), true));
@@ -260,7 +259,6 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
                         View.OnClickListener clickListener = new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
                                 dialogItem.dismissDialog();
                                 initItemTv();
                                 itemModels.clear();
@@ -298,6 +296,7 @@ public class MainActivity extends AppCompatActivity implements KategoriAdapter.K
                     outRect.top = spacing;
                 }
                 outRect.bottom = spacing; // item bottom
+
             } else {
                 outRect.left = column * spacing / spanCount;
                 outRect.right = spacing - (column + 1) * spacing / spanCount;
